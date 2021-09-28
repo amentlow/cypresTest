@@ -6,6 +6,6 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run
-        store_artifacts: true
-        record: true
+      - cypress/run:
+          store_artifacts: true
+          record: true
