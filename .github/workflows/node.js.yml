@@ -9,7 +9,9 @@ on:
       sha:
         description: 'commit SHA to check out, tag, build, and deploy'
         required: true
-
+      tagName:
+        description: 'tag name'
+        required: true
 jobs:
   say_hello:
     runs-on: ubuntu-latest
@@ -20,7 +22,6 @@ jobs:
         sha: ${{ github.event.inputs.sha }}
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
-        echo "- in ${{ github.event.inputs.home }}!"
     - name: CreateTag
       uses: actions/github-script@v3
       with:
@@ -29,7 +30,7 @@ jobs:
           github.git.createRef({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            ref: "refs/tags/tagname4",
+            ref: "refs/tags/${{ github.event.inputs.tagName }}",
             sha: "${{ github.event.inputs.sha }}"
           })
           
