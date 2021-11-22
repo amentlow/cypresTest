@@ -30,6 +30,6 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             ref: "refs/tags/tagname2",
-            sha: "4e6cbc7366b97369a2fd1c3701876266c8c27f39"
+            sha: "20bc7b393f32b0ebf958bec384566ef7b5688393"
           })
           
