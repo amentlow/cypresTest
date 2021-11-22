@@ -6,21 +6,18 @@ on:
         description: 'Person to greet'
         required: true
         default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'The Octoverse'
+      ref:
+        description: 'The ref (branch, tag, or commit SHA) to check out, build, and deploy'
+        required: true
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Clone
+    - name: CloneTest
       uses: actions/checkout@v2
       with:
-        fetch-depth: 2
-    - run: git checkout HEAD^
+        ref: ${{ github.event.inputs.ref }}
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
