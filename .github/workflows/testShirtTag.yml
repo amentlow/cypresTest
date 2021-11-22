@@ -21,5 +21,4 @@ jobs:
         with:
           sha: ${{ github.event.inputs.sha }}
       - name: Tagging
-        run: git tag -a vtag 20bc7b393f32b0ebf958bec384566ef7b5688393 -m testtag
-        
+        run: git tag -a vtag4 -m testtag
