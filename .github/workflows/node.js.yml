@@ -30,6 +30,6 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             ref: "refs/tags/tagname",
-            sha: context.sha
+            sha: ${{ github.event.inputs.ref }}
           })
           
