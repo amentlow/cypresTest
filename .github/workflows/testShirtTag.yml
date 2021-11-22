@@ -16,22 +16,12 @@ jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-    - name: CloneTest
-      uses: actions/checkout@v2
-      with:
-        sha: ${{ github.event.inputs.sha }}
-    - run: |
-        echo "Hello ${{ github.event.inputs.name }}!"
-        git tag -a ${{ github.event.inputs.sha }} ${{ github.event.inputs.sha }} -m 'testTag' && git push --tags
-        echo "DONE !"
-    - name: CreateTag
-      uses: actions/github-script@v3
-      with:
-        github-token: ${{ github.token }}
-        script: |
-          github.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref: "refs/tags/${{ github.event.inputs.tagName }}",
-            sha: "${{ github.event.inputs.sha }}"
-          })
+      - name: CloneTest
+        uses: actions/checkout@v2
+        with:
+          sha: ${{ github.event.inputs.sha }}
+      - name: tag
+        run: |
+          echo "Hello ${{ github.event.inputs.name }}!"
+          git tag -a ${{ github.event.inputs.sha }} ${{ github.event.inputs.sha }} -m 'testTag' && git push --tags
+          echo "DONE !"
