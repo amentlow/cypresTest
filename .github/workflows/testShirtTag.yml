@@ -23,5 +23,5 @@ jobs:
       - name: tag
         run: |
           echo "Hello ${{ github.event.inputs.name }}!"
-          git status
+          git tag -a vtag 20bc7b393f32b0ebf958bec384566ef7b5688393 -m testtag
           echo "DONE !"
