@@ -6,8 +6,8 @@ on:
         description: 'Person to greet'
         required: true
         default: 'Mona the Octocat'
-      ref:
-        description: 'The ref (branch, tag, or commit SHA) to check out, build, and deploy'
+      sha:
+        description: 'commit SHA to check out, tag, build, and deploy'
         required: true
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
     - name: CloneTest
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.inputs.ref }}
+        sha: ${{ github.event.inputs.sha }}
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
@@ -30,6 +30,6 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             ref: "refs/tags/tagname4",
-            sha: "${{ github.event.inputs.ref }}"
+            sha: "${{ github.event.inputs.sha }}"
           })
           
